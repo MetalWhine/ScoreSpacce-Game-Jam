@@ -17,6 +17,6 @@ public class SubmitScore : MonoBehaviour
 
     public void inputScore()
     {
-        gameManager.uploadScoretoLeaderboards(gameManager.getGuestID(), int.Parse(inputField.text));
+        gameManager.uploadScoretoLeaderboards(gameManager.getGuestID(), int.Parse(inputField.text), "MetalWhine [Dev]");
     }
 }
