@@ -1,0 +1,18 @@
+You are a germ -> find tutorial for customizing germ
+Get injected into cat
+
+Fight immune cells
+White blood cells -> just follows the player -> 100 points -> -10
+Neutrophils -> aggresive suicide bomber -> 500 points -> -30
+Helper T Cell -> shoots antibodies -> 1000 points -> -10
+Macrophages -> invincible but very slow and turns proteins to super proteins (Can only have 1 exist)
+
+Bacteria is constantly running out of protein
+100 protein
+loses 1 protein/second
+if hits 0 -> death
+Protein can be picked up from dead enemies -> 100 points each
+Super proteins -> 1000 points each
+
+There are combo chains that multiplies your built up score
+At the end of the game, depending on your score, you can see how badly you fuck up the cat
