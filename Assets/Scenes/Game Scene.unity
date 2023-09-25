@@ -689,7 +689,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 180896509}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4073524189946623755, guid: b1639223970c45e4ca901f5800bc9028, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: restartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &180896509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2145,7 +2157,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Top Players:'
+  m_text: Loading...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2600,7 +2612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 1}
+  m_Color: {r: 0.21698111, g: 0.21698111, b: 0.21698111, a: 0.7058824}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2679,7 +2691,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Your Rankings:'
+  m_text: Loading...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3890,7 +3902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2146532586}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4073524189946623755, guid: b1639223970c45e4ca901f5800bc9028, type: 3}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: goToMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2146532586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4004,7 +4028,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4073524189946623755, guid: b1639223970c45e4ca901f5800bc9028, type: 3}
       propertyPath: leaderboardID
-      value: 17766
+      value: 17697
+      objectReference: {fileID: 0}
+    - target: {fileID: 4073524189946623755, guid: b1639223970c45e4ca901f5800bc9028, type: 3}
+      propertyPath: leaderboardKey
+      value: playerleaderboard
       objectReference: {fileID: 0}
     - target: {fileID: 4895849770085281163, guid: b1639223970c45e4ca901f5800bc9028, type: 3}
       propertyPath: m_LocalPosition.x

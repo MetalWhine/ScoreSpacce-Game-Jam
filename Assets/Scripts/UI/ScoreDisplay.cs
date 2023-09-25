@@ -12,8 +12,8 @@ public class ScoreDisplay : MonoBehaviour
 
     private void Start()
     {
-        gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
         TMPtext = GetComponent<TMP_Text>();
+        gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
     }
 
     private void Update()

@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     private string guestID;
 
     [SerializeField]
+    private string playerName = "Guest";
+
+    [SerializeField]
     private bool primeGameManager = false;
 
     private GameManager[] managerCheck;
@@ -25,7 +28,7 @@ public class GameManager : MonoBehaviour
     public int totalScore;
 
     private LoseScreenScript loseScreenScript;
-    
+
     public string getGuestID()
     {
         return guestID;
@@ -50,21 +53,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public string getLeaderboardKey()
+    {
+        return leaderboardKey;
+    }
+
     public void uploadScoretoLeaderboards(string memberID, int score, string name)
     {
         string metadata = Application.systemLanguage.ToString();
 
-
-
         LootLockerSDKManager.SubmitScore(memberID, score, leaderboardKey, name, (response) =>
         {
-            if (response.statusCode == 200)
+            if (response.success)
             {
+                loseScreenScript.getHighLeaderboard();
+                loseScreenScript.getLocalLeaderboard();
                 Debug.Log("Score successfully uploaded!");
             }
             else
             {
-                Debug.Log("Score failed to upload" + response.errorData.message);
+                Debug.LogError("Score failed to upload" + response.errorData.message);
             }
         });
     }
@@ -73,14 +81,19 @@ public class GameManager : MonoBehaviour
     {
         EnemyManager enemyManager = (EnemyManager)FindObjectOfType(typeof(EnemyManager));
         enemyManager.enabled = false;
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         Destroy(GameObject.FindGameObjectWithTag("Macrophage"));
-        for(int i = 0; i < enemies.Length; i++)
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < enemies.Length; i++)
         {
             Destroy(enemies[i]);
         }
-        uploadScoretoLeaderboards(guestID, totalScore, "Guest");
+        GameObject[] protein = GameObject.FindGameObjectsWithTag("Protein");
+        for (int i = 0; i < protein.Length; i++)
+        {
+            Destroy(protein[i]);
+        }
         loseScreenScript.gameOverScreen();
+        uploadScoretoLeaderboards(guestID, totalScore, playerName);
     }
 
     public void restartLevel()
@@ -89,47 +102,14 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    [System.Obsolete]
-    public string getHighLeaderboard()
+    public void goToMenu()
     {
-        string leaderboard = "";
-        int leaderboardLoad = 50;
-        LootLockerSDKManager.GetScoreList(leaderboardID, leaderboardLoad, (response) =>
-        {
-            if (response.statusCode == 200)
-            {
-                for(int i = 0; i < leaderboardLoad; i++)
-                {
-                    LootLockerLeaderboardMember currentItem = response.items[i];
-                    leaderboard += currentItem.rank + ". " + currentItem.metadata + " - " + currentItem.score + "\n";
-                }
-                Debug.Log("Get scores success!");
-            }
-            else
-            {
-                Debug.Log("Score failed to upload" + response.errorData.message);
-            }
-        });
-
-
-        return leaderboard;
+        SceneManager.LoadScene("Main Menu");
     }
 
-    private void Awake()
+    public void goToGame()
     {
-        if (primeGameManager == false)
-        {
-            managerCheck = (GameManager[])FindObjectsOfType(typeof(GameManager));
-            if (managerCheck.Length >= 2)
-            {
-                Destroy(this.gameObject);
-            }
-            else
-            {
-                primeGameManager = true;
-                DontDestroyOnLoad(gameObject);
-            }
-        }
+        SceneManager.LoadScene("Game Scene");
     }
 
     private void Start()
