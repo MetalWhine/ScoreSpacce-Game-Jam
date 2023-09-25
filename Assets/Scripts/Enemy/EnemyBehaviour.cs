@@ -27,6 +27,9 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     private bool isInvincible = false;
 
+    [SerializeField]
+    private GameObject[] powerupDrops;
+
     private EnemyManager enemyManager;
     private GameObject player;
     private Rigidbody2D rb;
@@ -38,6 +41,17 @@ public class EnemyBehaviour : MonoBehaviour
 
     private void SpawnProtein()
     {
+        float randomChance = Random.Range(0f, 1f);
+        if(randomChance >= 0.6f)
+        {
+            int randomPower = Random.Range(0, powerupDrops.Length);
+            GameObject powerup = Instantiate(powerupDrops[randomPower]);
+            powerup.transform.position = transform.position;
+            Vector2 random = new Vector2(Random.Range(-3f, 3f), Random.Range(-3f, 3f));
+            random = Vector2.ClampMagnitude(random, 3);
+            powerup.GetComponent<Rigidbody2D>().AddForce(random, ForceMode2D.Impulse);
+        }
+
         int randomgNumb = Random.Range(1, proteinCount + 1);
         for (int i = 0; i < randomgNumb; i++)
         {
@@ -55,6 +69,7 @@ public class EnemyBehaviour : MonoBehaviour
         {
             if (HP <= 0)
             {
+                FindObjectOfType<AudioManager>().Play("Dying SFX");
                 SpawnProtein();
                 gameManager.totalScore += points;
                 Destroy(gameObject);

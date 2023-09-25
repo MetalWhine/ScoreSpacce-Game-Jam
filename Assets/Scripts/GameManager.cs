@@ -75,11 +75,15 @@ public class GameManager : MonoBehaviour
     {
         EnemyManager enemyManager = (EnemyManager)FindObjectOfType(typeof(EnemyManager));
         enemyManager.enabled = false;
-        Destroy(GameObject.FindGameObjectWithTag("Macrophage"));
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject[] Macrophages = GameObject.FindGameObjectsWithTag("Macrophage");
         for (int i = 0; i < enemies.Length; i++)
         {
             Destroy(enemies[i]);
+        }
+        for (int i = 0; i < Macrophages.Length; i++)
+        {
+            Destroy(Macrophages[i]);
         }
         GameObject[] protein = GameObject.FindGameObjectsWithTag("Protein");
         for (int i = 0; i < protein.Length; i++)
@@ -88,6 +92,7 @@ public class GameManager : MonoBehaviour
         }
         loseScreenScript.gameOverScreen();
         uploadScoretoLeaderboards(guestID, totalScore, playerName);
+        FindObjectOfType<AudioManager>().StopPlaying("Play Music");
     }
 
     public void restartLevel()
@@ -103,7 +108,14 @@ public class GameManager : MonoBehaviour
 
     public void goToGame()
     {
+        FindObjectOfType<AudioManager>().Play("Play Music");
+        FindObjectOfType<AudioManager>().StopPlaying("Menu Music");
         SceneManager.LoadScene("Game Scene");
+    }
+
+    public void quitApplication()
+    {
+        Application.Quit();
     }
 
     private void Start()

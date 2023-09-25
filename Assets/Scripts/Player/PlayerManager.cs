@@ -24,6 +24,7 @@ public class PlayerManager : MonoBehaviour
     public IEnumerator invincibilityFrames()
     {
         damaged = true;
+        FindObjectOfType<AudioManager>().Play("Hurt SFX");
         yield return new WaitForSeconds(invincibilityDuration);
         damaged = false;
     }
@@ -32,6 +33,7 @@ public class PlayerManager : MonoBehaviour
     {
         if(currentHP <= 0)
         {
+            FindObjectOfType<AudioManager>().Play("Dying SFX");
             gameManager.playerDies();
             Destroy(this.gameObject);
         }
@@ -43,6 +45,7 @@ public class PlayerManager : MonoBehaviour
         playerShoot = GetComponent<PlayerShoot>();
         currentHP = maxHP;
         gameManager = (GameManager)FindObjectOfType(typeof(GameManager));
+        FindObjectOfType<AudioManager>().Play("Play Music");
     }
 
     public void setPlayerDamage(float dmg)

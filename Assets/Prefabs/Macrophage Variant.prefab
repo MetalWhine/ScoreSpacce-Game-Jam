@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2116560742206042581, guid: 840ec9ebae67c7141b2550d58b3c9a26, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2229188053778196182, guid: 840ec9ebae67c7141b2550d58b3c9a26, type: 3}
       propertyPath: m_Name
@@ -99,6 +99,14 @@ PrefabInstance:
     - target: {fileID: 2511197698308439923, guid: 840ec9ebae67c7141b2550d58b3c9a26, type: 3}
       propertyPath: m_Offset.y
       value: 0.6046995
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722776354192592743, guid: 840ec9ebae67c7141b2550d58b3c9a26, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722776354192592743, guid: 840ec9ebae67c7141b2550d58b3c9a26, type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 7819915281122017978, guid: 840ec9ebae67c7141b2550d58b3c9a26, type: 3}
       propertyPath: HP

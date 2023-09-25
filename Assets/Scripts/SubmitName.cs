@@ -9,6 +9,7 @@ public class SubmitName : MonoBehaviour
 
     private void Start()
     {
+        FindObjectOfType<AudioManager>().Play("Menu Music");
         nameInput = GetComponentInChildren<TMP_InputField>();
         nameInput.text = GameManager.playerName;
     }

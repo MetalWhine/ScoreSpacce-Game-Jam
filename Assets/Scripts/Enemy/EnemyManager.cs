@@ -32,9 +32,10 @@ public class EnemyManager : MonoBehaviour
     private void EnemySpawning()
     {
         int random = Random.Range(0, spawners.Length);
+        Debug.Log(random);
         GameObject loc = spawners[random];
-        random = Random.Range(0, enemies.Length);
-        Instantiate(enemies[random], loc.transform);
+        int randomEnemy = Random.Range(0, enemies.Length);
+        Instantiate(enemies[randomEnemy], loc.transform);
     }
 
     IEnumerator SpawnEnemy()
@@ -51,7 +52,7 @@ public class EnemyManager : MonoBehaviour
         {
             spawnDelay -= spawnShortening * Time.deltaTime;
         }
-        if (j < 5)
+        if (j < 10)
         {
             spawnNumbers += spawnShortening * Time.deltaTime;
         }
