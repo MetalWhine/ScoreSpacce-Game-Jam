@@ -8,23 +8,17 @@ public class GameManager : MonoBehaviour
 {
     [Header("Loot Locker Settings")]
     [SerializeField][Tooltip("Get leader board key from Loot Locker")]
-    private string leaderboardKey = "scoreleaderboards";
+    private string leaderboardKey = "playerleaderboard";
     [SerializeField]
     [Tooltip("Get leader board ID from Loot Locker")]
-    private int leaderboardID = 17681;
+    private int leaderboardID = 17697;
 
     //  The ID for guest accounts, use for testing
     [SerializeField]
     private string guestID;
 
-    [SerializeField]
-    private string playerName = "Guest";
-
-    [SerializeField]
-    private bool primeGameManager = false;
-
-    private GameManager[] managerCheck;
-
+    public static string playerName = "Guest";
+    
     public int totalScore;
 
     private LoseScreenScript loseScreenScript;
